@@ -9,7 +9,8 @@ import com.example.demo.entity.Client;
 @Component
 public class ClientMapper {
 
-    public ClientDto clientDto(Client client, Integer age) {
+    public ClientDto clientDto(Client client) {
+        int age = LocalDate.now().getYear() - client.getDateNaissance().getYear();
         return new ClientDto(client.getId(), client.getNom(), client.getPrenom(), age);
     }
 

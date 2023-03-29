@@ -1,14 +1,12 @@
 package com.example.demo.entity;
 
+import javax.persistence.*;
 import java.time.LocalDate;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.time.Period;
+import java.util.List;
 
 /**
- * Entity représentant un client.
+ * Entity représentant un Client.
  */
 @Entity
 public class Client {
@@ -25,6 +23,9 @@ public class Client {
 
     @Column
     private LocalDate dateNaissance;
+
+    @OneToMany(mappedBy = "client")
+    private List<Facture> factures;
 
     public Long getId() {
         return id;
@@ -57,5 +58,12 @@ public class Client {
     public void setDateNaissance(LocalDate dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
-}
 
+    public List<Facture> getFactures() {
+        return factures;
+    }
+
+    public void setFactures(List<Facture> factures) {
+        this.factures = factures;
+    }
+}

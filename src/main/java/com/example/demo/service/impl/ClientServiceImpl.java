@@ -31,8 +31,7 @@ public class ClientServiceImpl implements ClientService {
     public List<ClientDto> findAll() {
         List<ClientDto> dtos = new ArrayList<>();
         for (Client client : clientRepository.findAll()) {
-            Integer age = LocalDate.now().getYear() - client.getDateNaissance().getYear();
-            ClientDto dto = clientMapper.clientDto(client, age);
+            ClientDto dto = clientMapper.clientDto(client);
             dtos.add(dto);
         }
         return dtos;
