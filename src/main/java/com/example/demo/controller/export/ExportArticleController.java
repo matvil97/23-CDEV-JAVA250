@@ -1,5 +1,10 @@
 package com.example.demo.controller.export;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +19,7 @@ import java.util.List;
 import com.example.demo.dto.ArticleDto;
 import com.example.demo.service.ArticleService;
 import com.example.demo.service.ExportArticleCSVService;
+import com.example.demo.service.ExportArticleXLSXService;
 
 /**
  * Controller pour réaliser l'export des articles.
@@ -24,6 +30,8 @@ public class ExportArticleController {
 
     @Autowired
     private ExportArticleCSVService exportArticleCSVService;
+    @Autowired
+    private ExportArticleXLSXService exportArticleXLSXService;
 
     /**
      * Export des articles au format CSV.
@@ -34,6 +42,13 @@ public class ExportArticleController {
         response.setHeader("Content-Disposition", "attachment; filename=\"export-articles.csv\"");
         PrintWriter writer = response.getWriter();
         exportArticleCSVService.export(writer);
+    }
+
+    @GetMapping("xlsx")
+    public void exportXLSX(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setHeader("Content-Disposition",
+            "attachment; filename=\"export-articles.xlsx\"");
+        exportArticleXLSXService.export(response.getOutputStream());
     }
 
 }

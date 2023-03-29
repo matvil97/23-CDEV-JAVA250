@@ -6,16 +6,25 @@ import java.time.LocalDate;
  * Classe permettant d'exposer des données au format JSON au client.
  */
 public class ClientDto {
+
     private Long id;
     private String nom;
     private String prenom;
-    private LocalDate dateNaissance;
+    private Integer age;
 
-    public ClientDto(Long id, String nom, String prenom, LocalDate dateNaissance) {
+    public ClientDto(Long id, String nom, String prenom, Integer age) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
-        this.dateNaissance = dateNaissance;
+        this.age = age;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public Long getId() {
@@ -42,11 +51,5 @@ public class ClientDto {
         this.prenom = prenom;
     }
 
-    public LocalDate getDateNaissance() {
-        return dateNaissance;
-    }
 
-    public void setDateNaissance(LocalDate dateNaissance) {
-        this.dateNaissance = dateNaissance;
-    }
 }
