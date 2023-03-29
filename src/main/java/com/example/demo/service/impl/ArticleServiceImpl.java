@@ -4,6 +4,7 @@ import com.example.demo.dto.ArticleDto;
 import com.example.demo.repository.ArticleRepository;
 import com.example.demo.service.ArticleService;
 import com.example.demo.service.mapper.ArticleMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,13 +19,10 @@ import static java.util.stream.Collectors.toList;
 @Transactional
 public class ArticleServiceImpl implements ArticleService {
 
+    @Autowired
     private ArticleRepository articleRepository;
+    @Autowired
     private ArticleMapper articleMapper;
-
-    public ArticleServiceImpl(ArticleRepository articleRepository, ArticleMapper articleMapper) {
-        this.articleRepository = articleRepository;
-        this.articleMapper = articleMapper;
-    }
 
     @Override
     public List<ArticleDto> findAll() {

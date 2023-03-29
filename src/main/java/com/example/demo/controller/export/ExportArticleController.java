@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+
+import com.example.demo.dto.ArticleDto;
+import com.example.demo.service.ArticleService;
+import com.example.demo.service.ExportArticleCSVService;
 
 /**
  * Controller pour réaliser l'export des articles.
@@ -16,6 +21,9 @@ import java.io.PrintWriter;
 @Controller
 @RequestMapping("export/articles")
 public class ExportArticleController {
+
+    @Autowired
+    private ExportArticleCSVService exportArticleCSVService;
 
     /**
      * Export des articles au format CSV.
@@ -25,8 +33,7 @@ public class ExportArticleController {
         response.setContentType("text/csv");
         response.setHeader("Content-Disposition", "attachment; filename=\"export-articles.csv\"");
         PrintWriter writer = response.getWriter();
-        writer.println("Hello;world");
-        writer.println("Bonjour;");
+        exportArticleCSVService.export(writer);
     }
 
 }
