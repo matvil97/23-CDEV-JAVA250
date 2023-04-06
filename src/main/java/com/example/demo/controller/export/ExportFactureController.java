@@ -50,5 +50,7 @@ public class ExportFactureController {
         response.setHeader("Content-Disposition", "attachment; filename=\"export-facture-" + id + ".pdf\"");
         OutputStream outputStream = response.getOutputStream();
         // TODO
+
+    
     }
 }

@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,5 +44,17 @@ public class Facture {
 
     public void setLigneFactures(List<LigneFacture> ligneFactures) {
         this.ligneFactures = ligneFactures;
+    }
+
+    public Date getDate() {
+        return null;
+    }
+
+    public Object getMontant() {
+        return null;
+    }
+
+    public Date getNumero() {
+        return null;
     }
 }
