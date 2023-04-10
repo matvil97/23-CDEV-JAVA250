@@ -18,6 +18,11 @@ public class Article {
     @Column
     private double prix;
 
+    public String getDesignation() {
+        return libelle;
+    }
+
+
     @Column
     private String imageUrl;
 
